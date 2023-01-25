@@ -663,8 +663,9 @@ systemctl enable docker
 
 
 #install git
+yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
 yum update -y
-yum install git
+yum install git latest
 
 #run docker image for the Alpine basic linux image
-docker container run alpine ls -l
+docker container run -it -d alpine /bin/sh
