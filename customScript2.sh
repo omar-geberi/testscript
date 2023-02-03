@@ -658,14 +658,14 @@ do_install
 
 
 #start docker
-systemctl start docker
-systemctl enable docker
+sudo systemctl start docker
+sudo systemctl enable docker
 
 
 #install git
-yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-yum update -y
-yum install git latest
+sudo yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+sudo yum update -y
+sudo yum install git latest
 
 #run docker image for the Alpine basic linux image
-docker container run -it -d alpine /bin/sh
+sudo docker container run -it -d alpine /bin/sh
