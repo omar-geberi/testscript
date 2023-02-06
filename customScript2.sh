@@ -653,7 +653,6 @@ do_install() {
 	sudo systemctl start docker
 	sudo systemctl enable docker
 
-
 	#install git
 	yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
 	yum update -y
