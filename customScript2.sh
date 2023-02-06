@@ -661,8 +661,7 @@ do_install() {
 
 	#run docker image for the Alpine basic linux image
 	docker container run -it -d alpine /bin/sh
-	
-	
+		
 	exit 1
 }
 
