@@ -648,6 +648,21 @@ do_install() {
 			exit 1
 			;;
 	esac
+	
+	#start docker
+	sudo systemctl start docker
+	sudo systemctl enable docker
+
+
+	#install git
+	yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+	yum update -y
+	yum install git latest
+
+	#run docker image for the Alpine basic linux image
+	docker container run -it -d alpine /bin/sh
+	
+	
 	exit 1
 }
 
@@ -657,15 +672,4 @@ do_install
 
 
 
-#start docker
-sudo systemctl start docker
-sudo systemctl enable docker
 
-
-#install git
-sudo yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-sudo yum update -y
-sudo yum install git latest
-
-#run docker image for the Alpine basic linux image
-sudo docker container run -it -d alpine /bin/sh
