@@ -650,16 +650,16 @@ do_install() {
 	esac
 	
 	#start docker
-	systemctl start docker
-	systemctl enable docker
+	$sh_c systemctl start docker
+	$sh_c systemctl enable docker
 
 	#install git
-	yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-	yum update -y
-	yum install git latest
+	$sh_c yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+	$sh_c yum update -y
+	$sh_c yum install git latest
 
 	#run docker image for the Alpine basic linux image
-	docker container run -it -d alpine /bin/sh
+	$sh_c docker container run -it -d alpine /bin/sh
 		
 	exit 1
 }
