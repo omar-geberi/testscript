@@ -649,24 +649,24 @@ do_install() {
 			;;
 	esac
 	
-	#start docker
-	$sh_c systemctl start docker
-	$sh_c systemctl enable docker
-
-	#install git
-	$sh_c yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-	$sh_c yum update -y
-	$sh_c yum install git latest
-
-	#run docker image for the Alpine basic linux image
-	$sh_c docker container run -it -d alpine /bin/sh
-		
 	exit 1
 }
 
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
 do_install
+
+#start docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+#run docker image for the Alpine basic linux image
+sudo docker container run -it -d alpine /bin/sh
+
+#install git
+$sh_c yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+$sh_c yum update -y
+$sh_c yum install git latest
 
 
 
